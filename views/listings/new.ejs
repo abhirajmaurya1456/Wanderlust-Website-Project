@@ -1,0 +1,57 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="row">
+    <div class="col-8 offset-2">
+
+
+<br>
+    <h3>Create a new Listing</h3>
+    <br>
+    <form action="/listings" method="post" enctype="multipart/form-data"   class="needs-validation" novalidate>
+        <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="listing[title]" placeholder="Add a catchy title" class="form-control" required>
+        <div class="valid-feedback">Title looks good</div>
+        <div class="invalid-feedback">enter a  valid title</div>
+        </div>
+
+        <div class="mb-3"> 
+        <label for="description" class="form-label">Description</label>
+         <textarea name="listing[description]" placeholder="enter description" class="form-control" required></textarea>
+         <div class="invalid-feedback">enter a short description</div>
+        </div>
+       
+       <!-- <div class="mb-3">
+          <label for="image" class="form-label">Image URL</label>
+        <input type="text" name="listing[image]" placeholder="enter image URL/Link (Optional)" class="form-control">
+       </div> -->
+       <div class="mb-3">
+          <label for="image" class="form-label">Upload Listing Image</label>
+        <input type="file" name="listing[image]" class="form-control" required>
+       </div>
+
+     <div class="mb-3">
+         <label for="location" class="form-label">Location</label>
+        <input type="text" name="listing[location]" placeholder="Enter location (e.g., Jaipur, Rajasthan)" class="form-control" required>
+        <div class="invalid-feedback">enter a valid location</div>
+    </div>
+
+<div class="row">
+
+    <div class="mb-3 col-md-8">
+     <label for="country" class="form-label">Country</label>
+        <input type="text" name="listing[country]" value="India" class="form-control" required>
+        <div class="invalid-feedback">enter a valid country name</div>
+    </div>
+
+    <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price(&#8377;)</label>
+        <input type="number" name="listing[price]"  value=1200 class="form-control" required >
+        <div class="invalid-feedback">enter a  valid price</div>
+    </div>
+</div>
+        <button class="btn btn-dark add-btn">Add</button>
+        <br>
+        <br>
+    </form>
+    </div>
+</div>

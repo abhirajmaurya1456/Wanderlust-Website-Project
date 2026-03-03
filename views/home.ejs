@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+body {
+    background: 
+        linear-gradient(rgba(220, 214, 214, 0.6),rgba(239, 108, 51, 0.6), rgb(44, 40, 40,.6)), 
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    animation: zoom 15s infinite alternate;
+}
+
+@keyframes zoom {
+    from { background-size: 100%; }
+    to { background-size: 110%; }
+}
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff385c;
+        }
+
+        .nav-buttons a {
+            margin-left: 15px;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .login-btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .signup-btn {
+            background-color: #ff385c;
+            color: white;
+        }
+
+        .signup-btn:hover {
+            background-color: #e11d48;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons a {
+            text-decoration: none;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .explore-btn {
+            background-color: #ff385c;
+            color: white;
+        }
+
+        .explore-btn:hover {
+            background-color: #e11d48;
+        }
+
+        .secondary-btn {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo"><i class="fa-regular fa-compass"></i> Wanderlust</div>
+        <div class="nav-buttons">
+            <!-- YOU WILL ADD ROUTES -->
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/signup" class="signup-btn">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Discover Unique Places Around the World</h1>
+        <p>Book stays, explore destinations, and create unforgettable memories with Wanderlust.</p>
+
+        <div class="hero-buttons">
+            <a href="/listings" class="explore-btn">Explore Stays</a>
+            <a href="/signup" class="secondary-btn">Sign In to Book</a>
+        </div>
+    </div>
+
+</body>
+</html>
