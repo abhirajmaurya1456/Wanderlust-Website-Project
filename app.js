@@ -24,10 +24,12 @@ const listingsRouter=require("./routes/listings.js");
 const reviewsRouter=require("./routes/review.js");
 const userRouter=require("./routes/user.js");
 const session=require("express-session");
+const MongoStore = require('connect-mongo').default;
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
+const dburl=process.env.ATLASDB_URL;
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -36,12 +38,25 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
+const   store= MongoStore.create({
+    mongoUrl:dburl,
+    crypto:{
+        secret:process.env.SECRET,
+    },
+    touchAfter:24*60*60, //in seconds
+});
+
+store.on("error",()=>{
+console.log("ERROR in MONGO SESSION STORE");
+});
+
 const sessionOptions={
-    secret:"mysupersecretcode",
+    store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
-        expires:Date.now()+7*24*60*60*1000,
+        expires:Date.now()+7*24*60*60*1000, // in milliseconds
         maxAge:7*24*60*60*1000,
         httpOnly:true,
     },
@@ -55,15 +70,18 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+
+
+async function main() {
+  await mongoose.connect(dburl);
+}
+
 main()
 .then(()=>{
     console.log("Connected to DB...");
 })
 .catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-}
 
 app.get("/", (req, res) => {
     if (req.user) {
