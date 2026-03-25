@@ -30,7 +30,7 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
 const dburl=process.env.ATLASDB_URL;
-
+// const dburl="mongodb://127.0.0.1:27017/wanderlust";
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
@@ -75,7 +75,7 @@ passport.deserializeUser(User.deserializeUser());
 
 async function main() {
   await mongoose.connect(dburl);
-}
+};
 
 main()
 .then(()=>{
